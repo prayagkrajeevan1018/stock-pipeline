@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_stocks
+    description: "Cleaned and deduplicated stock prices. One row per ticker per trading day."
+    columns:
+      - name: stock_id
+        description: "Surrogate key: ticker + trade_date"
+        tests:
+          - unique
+          - not_null
+      - name: ticker
+        tests:
+          - not_null
+      - name: trade_date
+        tests:
+          - not_null
+      - name: close_price
+        tests:
+          - not_null
+      - name: volume
+        tests:
+          - not_null

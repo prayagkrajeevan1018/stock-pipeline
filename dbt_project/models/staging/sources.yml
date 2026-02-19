@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Raw stock data loaded from Yahoo Finance via yfinance"
+    tables:
+      - name: stock_prices
+        description: "Raw OHLCV data for all tracked tickers"
+        columns:
+          - name: ticker
+            description: "Stock ticker symbol"
+            tests:
+              - not_null
+          - name: trade_date
+            description: "Date of the trading session"
+            tests:
+              - not_null
+          - name: close
+            description: "Closing price for the day"
+            tests:
+              - not_null

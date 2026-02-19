@@ -1,0 +1,25 @@
+# Data files (never commit raw data or the warehouse)
+data/
+*.parquet
+*.duckdb
+
+# dbt artifacts
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+
+# Airflow
+airflow.cfg
+airflow.db
+
+# OS
+.DS_Store
+Thumbs.db

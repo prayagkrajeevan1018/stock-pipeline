@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: daily_returns
+    description: "Daily financial metrics per ticker: returns, volatility, volume trends."
+    columns:
+      - name: stock_id
+        tests:
+          - unique
+          - not_null
+      - name: ticker
+        tests:
+          - not_null
+      - name: trade_date
+        tests:
+          - not_null
+      - name: close_price
+        tests:
+          - not_null
+      - name: price_direction
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['UP', 'DOWN', 'FLAT']
+
+  - name: moving_averages
+    description: "Technical indicators: SMA7, SMA30, SMA90 and volume spike detection."
+    columns:
+      - name: stock_id
+        tests:
+          - unique
+          - not_null
+      - name: ticker
+        tests:
+          - not_null
+      - name: close_price
+        tests:
+          - not_null
+      - name: price_vs_sma30
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['ABOVE_SMA30', 'BELOW_SMA30', 'AT_SMA30']
